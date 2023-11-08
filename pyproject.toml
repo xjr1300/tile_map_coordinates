@@ -1,0 +1,66 @@
+[tool.poetry]
+name = "tile-map-coordinates"
+version = "0.1.0"
+description = ""
+authors = ["Yasunori Ishiguro <xjr1300.04@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+black = "^23.11.0"
+isort = "^5.12.0"
+ruff = "^0.1.4"
+mypy = "^1.6.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 79 # 1行の最大文字数
+target-version = "py311" # Python3.11を想定
+select = ["ALL"] # すべてのルールを有効
+ignore = [ # 除外するルール
+    "D100",    # パブリックモジュールのdocstringが空
+    "D104",    # パブリックパッケージのdocstringがない
+    "D415",    # docstringの最初の行はピリオド、クエスチョンマークまたはエクスクラメーションで終了
+    "ERA001",  # コメントアウトしたコード
+    "T201",    # print関数を使用しない
+    "PLR0913", # 関数の引数が多すぎる
+    "PLR2004", # マジック値の代わりに名前付き定数または列挙型を使用
+    "COM812",  # ファイルの末尾に空行がない
+    "ISC001",
+]
+# 一般的に無視するディレクトリを除外
+exclude = [
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".venv",
+    "venv",
+    "__pypackages__",
+    "_build",
+    "build",
+    "dist",
+    "node_modules",
+]
+
+[tool.ruff.lint]
+# --fixが与えられたとき、すべての有効なルールを修正
+fixable = ["ALL"]
+# --fixが与えられたときに、除外するルール
+unfixable = []
+
+[tool.ruff.lint.pydocstyle]
+convention = "google" # Googleスタイルのdocstringを使用
+
+[tool.isort]
+py_version = 311
+profile = "black"
+line_length = 79
+
+[tool.black]
+target-version = ["py311"]
+line-length = 79
